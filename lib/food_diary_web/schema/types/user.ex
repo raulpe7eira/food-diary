@@ -6,6 +6,7 @@ defmodule FoodDiaryWeb.Schema.Types.User do
     field :id, non_null(:id), description: "Users id, needs to be an integer"
     field :name, non_null(:string), description: "Users name"
     field :email, non_null(:string), description: "Users email"
+    field :meals, list_of(:meal), description: "Users meals"
   end
 
   input_object :create_user_input do
