@@ -1,19 +1,74 @@
-# FoodDiary
+# FoodDiary API
 
-To start your Phoenix server:
+This repository is the code corresponding to the [Ignite, Model: Elixir and GraphQL with Absinthe](https://app.rocketseat.com.br/node/elixir-e-graphql-com-absinthe-2022) lab.
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+> The project simulates a Food Diary management API that allows to register users and meals with GraphQL.
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+## Previous installations
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+**Database**, we recommends install [PostgreSQL](https://www.postgresql.org/) with [Docker](https://hub.docker.com/_/postgres). After that, sets connection configuration at:
 
-## Learn more
+- `config/dev.exs`
+- `config/test.exs`
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+## Gets dependencies, setups database, tests, coverages, reports and starts application
+
+```bash
+cd food-diary
+mix deps.get
+mix ecto.setup
+mix test
+mix test --cover
+mix phx.server
+```
+
+## How to use?
+
+```bash
+# provides resources graphql
+curl -X POST 'http://localhost:4000/api/graphql'
+
+# provides resources graphql with web development interface
+curl -X POST 'http://localhost:4000/api/graphiql'
+```
+
+### Resources GraphQL
+
+```bash
+# retrieves user
+query {
+  user(id: 1) {
+    email,
+    name
+  }
+}
+
+# creates user
+mutation {
+  createUser(input: {
+    email: "fulano@mail.com",
+    name: "Fulano"
+  }) {
+    id
+  }
+}
+
+# creates meal
+mutation {
+  createMeal(input: {
+    userId: 3,
+    description: "Pizza",
+    calories: 370.50,
+    category: FOOD
+  }) {
+    id
+  }
+}
+
+# listens new meal
+subscription {
+  newMeal {
+    description
+  }
+}
+```
