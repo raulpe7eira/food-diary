@@ -1,6 +1,6 @@
 # FoodDiary API
 
-This repository is the code corresponding to the [Ignite, Model: Elixir and GraphQL with Absinthe](https://app.rocketseat.com.br/node/elixir-e-graphql-com-absinthe-2022) lab.
+This repository is the code corresponding to the [Ignite, Module: Elixir and GraphQL with Absinthe](https://app.rocketseat.com.br/node/elixir-e-graphql-com-absinthe-2022) lab.
 
 > The project simulates a Food Diary management API that allows to register users and meals with GraphQL.
 
