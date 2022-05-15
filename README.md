@@ -38,7 +38,7 @@ curl -X POST 'http://localhost:4000/api/graphiql'
 # retrieves user
 query {
   user(id: 1) {
-    email,
+    email
     name
   }
 }
